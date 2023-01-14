@@ -39,6 +39,8 @@ public class EleveAction  extends ActionSupport implements ModelDriven  {
         return this.eleve;
     }
     public String codeId;
+    public  String nom;
+    public String prenom;
 
     public Eleve getModel() {
         return eleve;
@@ -87,15 +89,47 @@ public class EleveAction  extends ActionSupport implements ModelDriven  {
 
 
     }
-    @Action(value = "editAction", results = {
-            @Result(name = "success", location = "/afficher.jsp"),
+    @Action(value = "editEleve", results = {
+            @Result(name = "success", location = "/editEleve.jsp"),
             @Result(name = "error", location = "/error.jsp")
     })
-    public String edit() {
-        this.eleve = this.service.getCode(this.codeId);
-        this.eleves = this.service.getAll();
-        this.editMode = true;
-        return "success";
+    public String editEleve() {
+        try {
+            System.out.println("we are in edit"+ codeId);
+            // Retrieve the eleve using the service
+            eleve = service.getCode(codeId);
+            return "success";
+        } catch (Exception e) {
+            return "error";
+        }
+    }
+    @Action(value = "updateEleve", results = {
+            @Result(name = "success",  type = "redirectAction", params = {
+                    "actionName", "all"}),
+            @Result(name = "error", location = "/error.jsp")
+    })
+    public String updateEleve() {
+
+        System.out.println("we are in update"+ "Nom: "+eleve.getNom()+ "prenom: "+eleve.getPrenom());
+
+        service.update(eleve);
+        return SUCCESS;
+
+    }
+    @Action(value = "deleteEleve", results = {
+            @Result(name = "success",  type = "redirectAction", params = {
+                    "actionName", "all"}),
+            @Result(name = "error", location = "/error.jsp")
+    })
+    public String deleteEleve() {
+        try {
+            // Delete the eleve using the service
+            System.out.println("we are trying this");
+            service.delete(codeId);
+            return "success";
+        } catch (Exception e) {
+            return "error";
+        }
     }
 
 

@@ -17,6 +17,8 @@ public class EleveServiceImp implements EleveService {
     static Transaction Tx;
     @Autowired
     private EleveRepository repo;
+    private String Eleve;
+
     @Override
     public List<Eleve> getAll() {
         System.out.println("we are here");
@@ -36,7 +38,10 @@ public class EleveServiceImp implements EleveService {
 
     @Override
     public Eleve getCode(String cne) {
-        return repo.getCode(cne);
+        System.out.println("we are getting the code"+ cne);
+        s= HibernateUtil.getSessionFactory().openSession();
+        Tx = s.beginTransaction();
+        return (Eleve)s.get(Eleve.class, cne);
     }
 
     @Override
@@ -61,11 +66,30 @@ public class EleveServiceImp implements EleveService {
 
     @Override
     public void update(Eleve eleve) {
-        repo.update(eleve);
+
+        System.out.println("trying to update "+ eleve.getCne());
+        s = HibernateUtil.getSessionFactory().openSession();
+        Tx = s.beginTransaction();
+
+        s.saveOrUpdate(eleve);
+        System.out.println("updating "+ eleve.getCne());
+
+        Tx.commit();
+        System.out.println("transaction "+ eleve.getCne()+" new name is: "+ eleve.getNom());
     }
 
     @Override
     public void delete(String cne) {
-        repo.delete(cne);
+        System.out.println("we are deleting!"+ cne);
+        s = HibernateUtil.getSessionFactory().openSession();
+        Tx = s.beginTransaction();
+        Eleve eleve = this.getCode(cne);
+        s.delete(eleve);
+        Tx.commit();
+
+
     }
+
+
+
 }

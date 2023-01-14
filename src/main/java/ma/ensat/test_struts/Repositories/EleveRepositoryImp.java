@@ -54,10 +54,11 @@ public class EleveRepositoryImp implements EleveRepository{
     }
 
     @Override
-    public void update(Eleve type) {
+    public void update(Eleve eleve) {
+        System.out.println("trying to update "+ eleve.getCne());
         s = HibernateUtil.getSessionFactory().openSession();
         Tx = s.beginTransaction();
-        s.saveOrUpdate(type);
+        s.saveOrUpdate(eleve);
         Tx.commit();
     }
 
