@@ -69,7 +69,7 @@
     <a href="student.jsp" class="btn">
         <i class="fa fa-users" aria-hidden="true"></i>
     </a>
-    <a href="gestionFiliere.action" class="btn">
+    <a href="filieres.jsp" class="btn">
         <i class="fa fa-building " aria-hidden="true"></i>
     </a>
 </div>

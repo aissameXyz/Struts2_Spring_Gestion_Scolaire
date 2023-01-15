@@ -8,6 +8,7 @@ package ma.ensat.test_struts.Config;
 import java.util.Properties;
 
 import ma.ensat.test_struts.models.Eleve;
+import ma.ensat.test_struts.models.Filiere;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -43,6 +44,7 @@ public class HibernateUtil {
                 configuration.setProperties(settings);
 
                 configuration.addAnnotatedClass(Eleve.class);
+                configuration.addAnnotatedClass(Filiere.class);
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build();

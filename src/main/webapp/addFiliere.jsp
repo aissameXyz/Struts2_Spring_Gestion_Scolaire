@@ -52,24 +52,20 @@
             padding: 10px 20px;
             border-radius: 5px;
             text-decoration: none;
+            align-content: center;
         }
 
     </style>
 </head>
 <body>
-<h1 style="text-align: center;">Enter Eleve Information</h1>
-<form action="eleveAction" method="post">
-    <label for="cne">CNE:</label>
-    <input type="text" id="cne" name="eleve.cne" required>
-    <label for="nom">Nom:</label>
-    <input type="text" id="nom" name="eleve.nom" required>
-    <label for="prenom">Prenom:</label>
-    <input type="text" id="prenom" name="eleve.prenom" required>
-    <label for="moyenne">Moyenne:</label>
-    <input type="number" id="moyenne" name="eleve.moyenne" required>
+<h1 style="text-align: center;">Enter Filiere Information</h1>
+<form action="addFiliere" method="post">
+    <label for="code_fil">Code Filiere:</label>
+    <input type="text" id="code_fil" name="filieire.code_fil" required>
+    <label for="nom">Nom Filiere:</label>
+    <input type="text" id="nom" name="filiere.nom_fil" required>
     <input type="submit" value="Save">
-    <a href="student.jsp" class="cancel-button">Cancel</a>
-
+    <a href="filieres.jsp" class="cancel-button">Annuler</a>
 </form>
 </body>
 </html>
