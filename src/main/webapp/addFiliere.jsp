@@ -54,6 +54,16 @@
             text-decoration: none;
             align-content: center;
         }
+        /* Add some custom styles for the footer */
+        footer {
+            background-color: #333; /* Set the background color of the footer */
+            color: #fff; /* Set the text color of the footer */
+            padding: 20px; /* Add some padding to the footer */
+        }
+        /* Add some custom styles for the copyright text */
+        .copyright {
+            font-size: 16px; /* Increase the font size of the copyright text */
+        }
 
     </style>
 </head>
@@ -68,4 +78,5 @@
     <a href="filieres.jsp" class="cancel-button">Annuler</a>
 </form>
 </body>
+
 </html>

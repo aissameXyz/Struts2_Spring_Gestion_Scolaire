@@ -41,16 +41,27 @@
             font-size: 24px; /* Increase the size of the icon */
             margin-right: 10px; /* Add some margin to the right of the icon */
         }
+        /* Add some custom styles for the footer */
+        footer {
+            background-color: #333; /* Set the background color of the footer */
+            color: #fff; /* Set the text color of the footer */
+            padding: 20px; /* Add some padding to the footer */
+        }
+        /* Add some custom styles for the copyright text */
+        .copyright {
+            font-size: 16px; /* Increase the font size of the copyright text */
+        }
     </style>
 </head>
 <body>
+
 <div class="container">
     <h1>Gestion des Étudiants</h1>
     <a href="all" class="btn btn-primary">
         <i class="fas fa-list"></i>
         Liste des Étudiants
     </a>
-    <a href="add_student.jsp" class="btn btn-success">
+    <a href="add_view" class="btn btn-success">
         <i class="fas fa-plus"></i>
         Ajouter un Étudiant
     </a>
@@ -61,4 +72,5 @@
 </div>
 
 </body>
+
 </html>

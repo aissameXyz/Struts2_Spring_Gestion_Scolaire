@@ -63,6 +63,16 @@
             background-color: #f5f5f5;
             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
         }
+        /* Add some custom styles for the footer */
+        footer {
+            background-color: #333; /* Set the background color of the footer */
+            color: #fff; /* Set the text color of the footer */
+            padding: 20px; /* Add some padding to the footer */
+        }
+        /* Add some custom styles for the copyright text */
+        .copyright {
+            font-size: 16px; /* Increase the font size of the copyright text */
+        }
     </style>
 </head>
 <body>
@@ -105,4 +115,5 @@
     </tbody>
 </table>
 </body>
+
 </html>

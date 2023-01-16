@@ -20,6 +20,19 @@ public class Eleve {
     @Column(name="moyenne")
     private double moyenne;
 
+
+    public Filiere getRef_fil() {
+        return ref_fil;
+    }
+
+    public void setRef_fil(Filiere ref_fil) {
+        this.ref_fil = ref_fil;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "ref_fil", nullable = true)
+    private Filiere ref_fil;
+
     public Eleve(String cne, String nom, String prenom, double moyenne) {
         this.cne = cne;
         this.nom = nom;

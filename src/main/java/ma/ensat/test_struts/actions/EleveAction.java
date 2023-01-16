@@ -3,11 +3,15 @@ package ma.ensat.test_struts.actions;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
+import com.opensymphony.xwork2.interceptor.annotations.Before;
 import com.sun.net.httpserver.Authenticator;
 import ma.ensat.test_struts.Services.EleveService;
 import ma.ensat.test_struts.Services.EleveServiceImp;
+import ma.ensat.test_struts.Services.FiliereService;
+import ma.ensat.test_struts.Services.FiliereServiceImp;
 import ma.ensat.test_struts.models.Eleve;
 
+import ma.ensat.test_struts.models.Filiere;
 import org.apache.struts2.convention.annotation.Action;
 
 import org.apache.struts2.convention.annotation.Result;
@@ -25,6 +29,8 @@ public class EleveAction  extends ActionSupport implements ModelDriven  {
 
 
     private EleveService service = new EleveServiceImp();
+    private FiliereService filiereService= new FiliereServiceImp();
+
 
 
     Eleve eleve =new Eleve() ;
@@ -34,6 +40,19 @@ public class EleveAction  extends ActionSupport implements ModelDriven  {
     public EleveAction() {
     }
     public List<Eleve> eleves = new ArrayList();
+
+    public List<Filiere> getFilieres() {
+        return filieres;
+    }
+
+    public void setFilieres(List<Filiere> filieres) {
+        this.filieres = filieres;
+    }
+
+    public  List<Filiere> filieres;
+
+
+    private int ref_fil;
 
     public Eleve getEleve() {
         return this.eleve;
@@ -52,6 +71,7 @@ public class EleveAction  extends ActionSupport implements ModelDriven  {
 
 
 
+
     @Action(value = "all", results = {
             @Result(name = "success", location = "/afficher.jsp"),
             @Result(name = "error", location = "/error.jsp")
@@ -60,21 +80,36 @@ public class EleveAction  extends ActionSupport implements ModelDriven  {
     public String getAll() {
 
 
-        System.out.println("we are her");
+
+
         //eleves.add(new Eleve("V567", "HOHO", "L7DAD", 99));
         this.eleves = this.service.getAll();
 
         return "success";
     }
 
+    // Methode pour afficher la vue pour ajouter eleve
+    @Action(value = "add_view", results = {
+            @Result(name = "success", location = "/add_student.jsp"),
+            @Result(name = "error", location = "/error.jsp")
+    })
+    public String add_view() throws Exception {
+
+        // we need the list of all filieres in the add eleve view
+        this.setFilieres(filiereService.getAll());
+
+        return SUCCESS;
+    }
     @Action(value = "eleveAction", results = {
             @Result(name = "success",  type = "redirectAction", params = {
                     "actionName", "all"}),
-            @Result(name = "error", location = "/error.jsp")
+            @Result(name = "error", location = "/error.jsp"),
+            @Result(name = "input" , location = "/student.jsp")
     })
     public String save() {
         System.out.println("eleve li 9adina: "+ eleve.getNom());
         try {
+
             service.create(eleve);
 
 
@@ -111,6 +146,8 @@ public class EleveAction  extends ActionSupport implements ModelDriven  {
     public String updateEleve() {
 
         System.out.println("we are in update"+ "Nom: "+eleve.getNom()+ "prenom: "+eleve.getPrenom());
+        Filiere filiere = filiereService.getCode(ref_fil);
+        eleve.setRef_fil(filiere);
 
         service.update(eleve);
         return SUCCESS;

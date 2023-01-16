@@ -1,6 +1,7 @@
 package ma.ensat.test_struts.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "filieres")
@@ -14,6 +15,16 @@ public class Filiere {
     @Column(name = "nom_fil")
     private String nom_fil;
 
+    public List<Eleve> getEleves() {
+        return eleves;
+    }
+
+    public void setEleves(List<Eleve> eleves) {
+        this.eleves = eleves;
+    }
+
+    @OneToMany(mappedBy = "ref_fil", fetch = FetchType.LAZY)
+    private List<Eleve> eleves;
     public Filiere() {
     }
 
