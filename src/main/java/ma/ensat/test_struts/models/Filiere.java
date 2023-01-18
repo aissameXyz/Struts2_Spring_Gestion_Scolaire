@@ -8,9 +8,9 @@ import java.util.List;
 public class Filiere {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "code_fil")
-    private int code_fil;
+
+    @Column(name = "code_fil", nullable = false)
+    private String code_fil;
 
     @Column(name = "nom_fil")
     private String nom_fil;
@@ -23,21 +23,21 @@ public class Filiere {
         this.eleves = eleves;
     }
 
-    @OneToMany(mappedBy = "ref_fil", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "ref_fil", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<Eleve> eleves;
     public Filiere() {
     }
 
-    public Filiere(int code_fil, String nom_fil) {
+    public Filiere(String code_fil, String nom_fil) {
         this.code_fil = code_fil;
         this.nom_fil = nom_fil;
     }
 
-    public int getCode_fil() {
+    public String getCode_fil() {
         return code_fil;
     }
 
-    public void setCode_fil(int code_fil) {
+    public void setCode_fil(String code_fil) {
         this.code_fil = code_fil;
     }
 

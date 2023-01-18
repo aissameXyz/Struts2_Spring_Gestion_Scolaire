@@ -18,7 +18,6 @@ public class FiliereServiceImp implements FiliereService{
     static Transaction Tx;
     @Autowired
     private EleveRepository repo;
-    private String Filiere;
 
     @Override
     public List<Filiere> getAll() {
@@ -38,7 +37,7 @@ public class FiliereServiceImp implements FiliereService{
     }
 
     @Override
-    public Filiere getCode(int code) {
+    public Filiere getCode(String code) {
         System.out.println("we are getting the code"+ code);
         s= HibernateUtil.getSessionFactory().openSession();
         Tx = s.beginTransaction();
@@ -80,7 +79,7 @@ public class FiliereServiceImp implements FiliereService{
     }
 
     @Override
-    public void delete(int code) {
+    public void delete(String code) {
         System.out.println("we are deleting!"+ code);
         s = HibernateUtil.getSessionFactory().openSession();
         Tx = s.beginTransaction();

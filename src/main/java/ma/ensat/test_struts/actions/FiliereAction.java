@@ -17,7 +17,7 @@ import java.util.List;
 public class FiliereAction extends ActionSupport implements ModelDriven {
     private Filiere filiere;
     private List<Filiere> filieres;
-    private int codeId;
+    private String codeId;
 
     private FiliereService service= new FiliereServiceImp();
 
@@ -94,11 +94,11 @@ public class FiliereAction extends ActionSupport implements ModelDriven {
         this.filieres = filieres;
     }
 
-    public int getCodeId() {
+    public String getCodeId() {
         return codeId;
     }
 
-    public void setCodeId(int codeId) {
+    public void setCodeId(String codeId) {
         this.codeId = codeId;
     }
 

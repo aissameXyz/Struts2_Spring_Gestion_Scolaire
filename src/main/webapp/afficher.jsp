@@ -73,40 +73,150 @@
         .copyright {
             font-size: 16px; /* Increase the font size of the copyright text */
         }
+        .centered {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+
+        }
+        .navbar{
+            background-color:#5F9EA0;
+        }
+
+
+
     </style>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- Container wrapper -->
+    <div class="container-fluid">
+        <!-- Toggle button -->
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-mdb-toggle="collapse"
+                data-mdb-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+        >
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Collapsible wrapper -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Navbar brand -->
+            <a class="navbar-brand mt-2 mt-lg-0" href="home.jsp">
+                <img
+                        src="https://www.guide-metiers.ma/wp-content/uploads/2019/02/ensatanger.couleur-1200x900-cropped.png"
+                        alt="ensat manager"
+                        height="45"
+                        loading="eager"
+                />
+            </a>
+            <!-- Left links -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="home.jsp">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="student.jsp">Elèves</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="filieres.jsp">Filieres</a>
+                </li>
+            </ul>
+            <!-- Left links -->
+        </div>
+        <!-- Collapsible wrapper -->
+
+        <!-- Right elements -->
+        <div class="d-flex align-items-center">
+            <!-- Icon -->
+
+            <!-- Notifications -->
+
+            <!-- Avatar -->
+            <div class="dropdown">
+                <a
+                        class="dropdown-toggle d-flex align-items-center hidden-arrow"
+                        href="#"
+                        id="navbarDropdownMenuAvatar"
+                        role="button"
+                        data-mdb-toggle="dropdown"
+                        aria-expanded="false"
+                >
+                    <img
+                            src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+                            class="rounded-circle"
+                            height="25"
+                            alt="Black and White Portrait of a Man"
+                            loading="lazy"
+                    />
+                </a>
+                <ul
+                        class="dropdown-menu dropdown-menu-end"
+                        aria-labelledby="navbarDropdownMenuAvatar"
+                >
+                    <li>
+                        <a class="dropdown-item" href="#">My profile</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">Settings</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Right elements -->
+    </div>
+    <!-- Container wrapper -->
+</nav>
+
+
 <div class="d-flex justify-content-between">
     <a href="home.jsp" class="action-btn"><i class="fas fa-home"></i></a>
-    <a href="add_student.jsp" class="action-btn"><i class="fas fa-user-plus"></i></a>
+    <a href="add_view" class="action-btn"><i class="fas fa-user-plus"></i></a>
     <a href="gestionFiliere" class="action-btn"><i class="fas fa-graduation-cap"></i></a>
 </div>
 <h1 class="text-center">Liste des Élèves</h1>
-<table class="table table-striped table-hover">
+<div class="d-flex justify-content-center">
+<table class="table table-striped table-hover centered  table-sm mx-auto">
     <thead class="thead-dark">
     <tr>
-        <th>CNE</th>
-        <th>Nom</th>
-        <th>Prénom</th>
-        <th>Moyenne</th>
-        <th colspan="2">ACTION</th>
+        <th class="text-center">CNE</th>
+        <th class="text-center">Nom</th>
+        <th class="text-center">Prénom</th>
+        <th class="text-center">Moyenne</th>
+        <th class="text-center">Filiere</th>
+        <th colspan="2" class="text-center">ACTION</th>
     </tr>
     </thead>
     <tbody>
     <s:iterator value="eleves">
         <tr>
-            <td><s:property value="cne"/></td>
-            <td><s:property value="nom"/></td>
-            <td><s:property value="prenom"/></td>
-            <td><s:property value="moyenne"/></td>
-            <td>
+            <td class="text-center"><s:property value="cne"/></td>
+            <td class="text-center"><s:property value="nom"/></td>
+            <td class="text-center"><s:property value="prenom"/></td>
+            <td class="text-center"><s:property value="moyenne"/></td>
+            <td class="text-center">
+                <s:if test="ref_fil != null">
+                <s:property value="ref_fil.nom_fil"/></td>
+                </s:if>
+                <s:else>
+                    Non determiné
+                </s:else>
+            <td class="text-center">
                 <a href="<s:url action="editEleve"><s:param name="codeId"><s:property value="cne"/></s:param></s:url>" >
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
                         <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
                     </svg>
                 </a>
             </td>
-            <td>  <a href="<s:url action="deleteEleve"><s:param name="codeId"><s:property value="cne"/></s:param></s:url>"
+            <td class="text-center">  <a href="<s:url action="deleteEleve"><s:param name="codeId"><s:property value="cne"/></s:param></s:url>"
                      onclick="return confirm('Etes vous sur de la suppression ?')" accesskey="">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                     <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
@@ -118,6 +228,20 @@
     </s:iterator>
     </tbody>
 </table>
+</div>
+<!-- Footer -->
+
+<footer class="page-footer font-small fixed-bottom" style="background-color: rgba(0, 0, 0, 0.2);">
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2023 Copyright:
+        <a href="/"> Aissame.xyz</a>
+    </div>
+    <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+
 </body>
 
 </html>

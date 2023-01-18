@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface FiliereService {
     public List<Filiere> getAll();
-    public Filiere getCode(int code);
+    public Filiere getCode(String code);
     public void add(Filiere filiere);
     public void update(Filiere filiere);
-    public void delete(int code);
+    public void delete(String code);
 }

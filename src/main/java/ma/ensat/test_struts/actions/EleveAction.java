@@ -60,6 +60,9 @@ public class EleveAction  extends ActionSupport implements ModelDriven  {
     public String codeId;
     public  String nom;
     public String prenom;
+    //pagination
+    private int page = 1;
+    private int totalPages;
 
     public Eleve getModel() {
         return eleve;
@@ -100,6 +103,8 @@ public class EleveAction  extends ActionSupport implements ModelDriven  {
 
         return SUCCESS;
     }
+    //update filling list
+
     @Action(value = "eleveAction", results = {
             @Result(name = "success",  type = "redirectAction", params = {
                     "actionName", "all"}),
@@ -109,9 +114,11 @@ public class EleveAction  extends ActionSupport implements ModelDriven  {
     public String save() {
         System.out.println("eleve li 9adina: "+ eleve.getNom());
         try {
+            if(eleve.getRef_fil().getCode_fil().isBlank()) {
+                eleve.setRef_fil(null);
 
+            }
             service.create(eleve);
-
 
             //service.create(new Eleve("V567", "HOHO", "L7DAD", 99));
 
@@ -133,6 +140,7 @@ public class EleveAction  extends ActionSupport implements ModelDriven  {
             System.out.println("we are in edit"+ codeId);
             // Retrieve the eleve using the service
             eleve = service.getCode(codeId);
+            this.setFilieres(filiereService.getAll());
             return "success";
         } catch (Exception e) {
             return "error";
@@ -146,8 +154,8 @@ public class EleveAction  extends ActionSupport implements ModelDriven  {
     public String updateEleve() {
 
         System.out.println("we are in update"+ "Nom: "+eleve.getNom()+ "prenom: "+eleve.getPrenom());
-        Filiere filiere = filiereService.getCode(ref_fil);
-        eleve.setRef_fil(filiere);
+
+
 
         service.update(eleve);
         return SUCCESS;
