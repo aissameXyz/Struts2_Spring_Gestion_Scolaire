@@ -118,13 +118,13 @@
             <!-- Left links -->
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="home.jsp">Home</a>
+                    <a class="nav-link text-dark" href="home.jsp">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="student.jsp">Elèves</a>
+                    <a class="nav-link text-dark" href="student.jsp">Elèves</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="filieres.jsp">Filieres</a>
+                    <a class="nav-link text-dark" href="filieres.jsp">Filieres</a>
                 </li>
             </ul>
             <!-- Left links -->
@@ -234,7 +234,7 @@
 <footer class="page-footer font-small fixed-bottom" style="background-color: rgba(0, 0, 0, 0.2);">
 
     <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2023 Copyright:
+    <div class="footer-copyright text-center py-3">© 2023 Copyright: Gestion Scolaire AISSAME BOUKHALLAD
         <a href="/"> Aissame.xyz</a>
     </div>
     <!-- Copyright -->

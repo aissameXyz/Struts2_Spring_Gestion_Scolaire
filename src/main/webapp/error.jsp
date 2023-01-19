@@ -143,7 +143,7 @@
 <footer class="page-footer font-small fixed-bottom" style="background-color: rgba(0, 0, 0, 0.2);">
 
     <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2023 Copyright:
+    <div class="footer-copyright text-center py-3">© 2023 Copyright: Gestion Scolaire AISSAME BOUKHALLAD
         <a href="/"> Aissame.xyz</a>
     </div>
     <!-- Copyright -->

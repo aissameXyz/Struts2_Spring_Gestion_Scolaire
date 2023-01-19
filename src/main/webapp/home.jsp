@@ -84,11 +84,11 @@
     </style>
 </head>
 
-<body style="background-image: url(https://cdn.pixabay.com/photo/2017/08/01/01/33/computer-2562651_1280.jpg); background-size: cover;">
+<body style="background-image: url(https://images.pexels.com/photos/289618/pexels-photo-289618.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2); background-size: cover;">
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light text-default ">
     <!-- Container wrapper -->
-    <div class="container-fluid">
+    <div class="container-fluid ">
         <!-- Toggle button -->
         <button
                 class="navbar-toggler"
@@ -116,13 +116,13 @@
             <!-- Left links -->
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="home.jsp">Home</a>
+                    <a class="nav-link text-white" href="home.jsp">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="student.jsp">Elèves</a>
+                    <a class="nav-link text-white" href="student.jsp">Elèves</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="filieres.jsp">Filieres</a>
+                    <a class="nav-link text-white" href="filieres.jsp">Filieres</a>
                 </li>
             </ul>
             <!-- Left links -->
@@ -173,8 +173,10 @@
     </div>
     <!-- Container wrapper -->
 </nav>
-<h1 style="text-align: center;">School Manager</h1>
-<div class="container" style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+<div class="title text-default " style=" display: flex; justify-content: center; margin-top: 15vh;">
+<h1 style="text-align: center;">Gestion Scolairer Spring & Struts</h1>
+</div>
+<div class="container" style="display: flex; justify-content: center; align-items: center; height: 50vh;">
     <a href="student.jsp" class="btn">
         <i class="fa fa-users" aria-hidden="true"></i>
     </a>
@@ -190,7 +192,7 @@
 <footer class="page-footer font-small fixed-bottom" style="background-color: rgba(0, 0, 0, 0.2);">
 
     <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2023 Copyright:
+    <div class="footer-copyright text-center py-3">© 2023 Copyright: Gestion Scolaire AISSAME BOUKHALLAD
         <a href="/"> Aissame.xyz</a>
     </div>
     <!-- Copyright -->
