@@ -23,7 +23,9 @@ public class FiliereServiceImp implements FiliereService{
 
     @Override
     public List<Filiere> getAll() {
-       return repo.getAll();
+        System.out.println("from getall filiere service");
+
+        return repo.getAll();
     }
 
     @Override

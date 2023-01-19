@@ -26,7 +26,9 @@ public class EleveServiceImp implements EleveService {
 
     @Override
     public Eleve getCode(String cne) {
-       return repo.getCode(cne);
+        System.out.println("from get eleve code service");
+
+        return repo.getCode(cne);
     }
 
     @Override

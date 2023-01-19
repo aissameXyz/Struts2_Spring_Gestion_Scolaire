@@ -29,7 +29,9 @@ public class EleveAction  extends ActionSupport implements ModelDriven  {
 
     @Autowired
     private EleveService service ;
-    private FiliereService filiereService= new FiliereServiceImp();
+
+    @Autowired
+    private FiliereService filiereService;
 
 
 
@@ -139,6 +141,7 @@ public class EleveAction  extends ActionSupport implements ModelDriven  {
         try {
             System.out.println("we are in edit"+ codeId);
             // Retrieve the eleve using the service
+
             eleve = service.getCode(codeId);
             this.setFilieres(filiereService.getAll());
             return "success";

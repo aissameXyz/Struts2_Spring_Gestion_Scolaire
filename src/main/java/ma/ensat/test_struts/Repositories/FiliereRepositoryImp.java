@@ -16,7 +16,7 @@ public class FiliereRepositoryImp implements FiliereRepository{
     static Transaction Tx;
     @Override
     public List<Filiere> getAll() {
-
+        System.out.println("from getall filiere repo");
         s = HibernateUtil.getSessionFactory().openSession();
         Tx = s.beginTransaction();
         try {

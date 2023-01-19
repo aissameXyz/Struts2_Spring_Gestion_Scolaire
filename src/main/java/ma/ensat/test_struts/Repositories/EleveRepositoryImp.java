@@ -32,6 +32,7 @@ public class EleveRepositoryImp implements EleveRepository{
 
     @Override
     public Eleve getCode(String id) {
+        System.out.println("from get eleve code repo");
         s = HibernateUtil.getSessionFactory().openSession();
         Tx = s.beginTransaction();
         return (Eleve)s.get(Eleve.class, id);

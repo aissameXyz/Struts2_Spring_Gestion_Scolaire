@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -152,15 +153,51 @@
     <!-- Container wrapper -->
 </nav>
 <h1 class="text-center">Update Eleve</h1>
-<s:form action="updateEleve" method="post">
-    <s:hidden name="eleve.cne" value="%{eleve.cne}"/>
-    <s:textfield name="eleve.nom" label="Nom" value="%{eleve.nom}"/>
-    <s:textfield name="eleve.prenom" label="Prenom" value="%{eleve.prenom}"/>
-    <s:textfield name="eleve.moyenne" label="Moyenne" value="%{eleve.moyenne}"/>
-    <s:select name="eleve.ref_fil.code_fil" list="filieres" listKey="code_fil" listValue="nom_fil" value="code_fil">filiere</s:select>
 
-    <s:submit value="Save" cssClass="btn btn-primary"/>
-</s:form>
+<div class="row">
+    <div class="col-md-6 mx-auto form-container">
+        <s:form action="updateEleve">
+            <div class="form-group">
+                <label for="cne">CNE</label>
+                <input readonly="readonly" type="text" class="form-control" id="cne" placeholder="CNE" name="eleve.cne" value="<s:property value='eleve.cne'/>"/>
+            </div>
+
+            <div class="form-group">
+                <label for="nom">Nom</label>
+                <input type="text" class="form-control" id="nom" placeholder="Nom" name="eleve.nom" value="<s:property value='eleve.nom'/>">
+            </div>
+
+            <div class="form-group">
+                <label for="prenom">Prenom</label>
+                <input type="text" class="form-control" id="prenom" placeholder="Prenom" name="eleve.prenom" value="<s:property value='eleve.prenom'/>">
+            </div>
+
+            <div class="form-group">
+                <label for="filiere">Filiere</label>
+                <select class="form-control" id="filiere" placeholder="Filiere" name="eleve.ref_fil.code_fil">
+                    <option value="" >Non Determiné</option>
+                    <s:iterator value="filieres">
+                        <c:if test="${code_fil.equalsIgnoreCase(eleve.ref_fil.code_fil)}">
+                            <option selected value="<s:property value="code_fil"/>"><s:property value="nom_fil"/></option>
+                        </c:if>
+                        <c:if test="${!code_fil.equalsIgnoreCase(eleve.ref_fil.nom_fil)}">
+                            <option value="<s:property value="code_fil"/>"><s:property value="code_fil"/></option>
+                        </c:if>
+                    </s:iterator>
+
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="moyenne">Moyenne</label>
+                <input type="text" class="form-control" id="moyenne" placeholder="Moyenne" name="eleve.moyenne" value="<s:property value='eleve.moyenne'/>">
+            </div>
+            <button type="submit" class="btn btn-primary">Update Eleve</button>
+        </s:form>
+    </div>
+</div>
+</div>
+
 <!-- Footer -->
 
 <footer class="page-footer font-small fixed-bottom" style="background-color: rgba(0, 0, 0, 0.2);">
