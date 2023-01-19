@@ -11,4 +11,5 @@ public interface FiliereRepository {
     void create(Filiere type);
     void update(Filiere type);
     void delete(String id);
+    public List<Eleve> getAllEleves(Filiere filiere);
 }

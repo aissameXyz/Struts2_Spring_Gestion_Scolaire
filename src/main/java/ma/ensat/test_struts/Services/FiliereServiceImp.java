@@ -51,5 +51,8 @@ public class FiliereServiceImp implements FiliereService{
 
     }
 
-
+    @Override
+    public List<Eleve> getAllEleves(Filiere filiere) {
+        return repo.getAllEleves(filiere);
+    }
 }

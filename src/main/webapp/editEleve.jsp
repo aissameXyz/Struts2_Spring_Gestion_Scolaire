@@ -11,15 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
     <!-- Add some styling for the page -->
     <style>
-        /* Add some custom styles for the form */
-        form {
-            margin: 30px auto;
-            width: 50%;
-            padding: 30px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            background-color: #f5f5f5;
-        }
+
 
         /* Add some custom styles for the input fields */
         input[type="text"], input[type="number"] {
@@ -154,51 +146,49 @@
 </nav>
 <h1 class="text-center">Update Eleve</h1>
 
-<div class="row">
-    <div class="col-md-6 mx-auto form-container">
-        <s:form action="updateEleve">
-            <div class="form-group">
-                <label for="cne">CNE</label>
-                <input readonly="readonly" type="text" class="form-control" id="cne" placeholder="CNE" name="eleve.cne" value="<s:property value='eleve.cne'/>"/>
-            </div>
 
-            <div class="form-group">
-                <label for="nom">Nom</label>
-                <input type="text" class="form-control" id="nom" placeholder="Nom" name="eleve.nom" value="<s:property value='eleve.nom'/>">
-            </div>
-
-            <div class="form-group">
-                <label for="prenom">Prenom</label>
-                <input type="text" class="form-control" id="prenom" placeholder="Prenom" name="eleve.prenom" value="<s:property value='eleve.prenom'/>">
-            </div>
-
-            <div class="form-group">
-                <label for="filiere">Filiere</label>
-                <select class="form-control" id="filiere" placeholder="Filiere" name="eleve.ref_fil.code_fil">
-                    <option value="" >Non Determiné</option>
-                    <s:iterator value="filieres">
-                        <c:if test="${code_fil.equalsIgnoreCase(eleve.ref_fil.code_fil)}">
-                            <option selected value="<s:property value="code_fil"/>"><s:property value="nom_fil"/></option>
-                        </c:if>
-                        <c:if test="${!code_fil.equalsIgnoreCase(eleve.ref_fil.nom_fil)}">
-                            <option value="<s:property value="code_fil"/>"><s:property value="code_fil"/></option>
-                        </c:if>
-                    </s:iterator>
-
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="moyenne">Moyenne</label>
-                <input type="text" class="form-control" id="moyenne" placeholder="Moyenne" name="eleve.moyenne" value="<s:property value='eleve.moyenne'/>">
-            </div>
-            <button type="submit" class="btn btn-primary">Update Eleve</button>
-        </s:form>
+<div class="row  g-3 align-items-center">
+<div class="col-md-6 mx-auto form-container">
+<s:form action="updateEleve" class="form">
+    <div class="form-group">
+    <label for="cne" class="form-label">CNE</label>
+    <input readonly="readonly" type="text" class="form-control" id="cne" placeholder="CNE" name="eleve.cne" value="<s:property value='eleve.cne'/>"/>
     </div>
+    <div class="form-group">
+        <label for="nom" class="form-label">Nom</label>
+        <input type="text" class="form-control" id="nom" placeholder="Nom" name="eleve.nom" value="<s:property value='eleve.nom'/>">
+    </div>
+
+    <div class="form-group">
+        <label for="prenom" class="form-label">Prenom</label>
+        <input type="text" class="form-control" id="prenom" placeholder="Prenom" name="eleve.prenom" value="<s:property value='eleve.prenom'/>">
+    </div>
+
+    <div class="form-group">
+        <label for="filiere" class="form-label">Filiere</label>
+        <select class="form-control" id="filiere" placeholder="Filiere" name="eleve.ref_fil.code_fil">
+            <option value="" >Non Determiné</option>
+            <s:iterator value="filieres">
+                <c:if test="${code_fil.equalsIgnoreCase(eleve.ref_fil.code_fil)}">
+                    <option selected value="<s:property value="code_fil"/>"><s:property value="nom_fil"/></option>
+                </c:if>
+                <c:if test="${!code_fil.equalsIgnoreCase(eleve.ref_fil.nom_fil)}">
+                    <option value="<s:property value="code_fil"/>"><s:property value="code_fil"/></option>
+                </c:if>
+            </s:iterator>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="moyenne" class="form-label">Moyenne</label>
+        <input type="text" class="form-control" id="moyenne" placeholder="Moyenne" name="eleve.moyenne" value="<s:property value='eleve.moyenne'/>">
+    </div>
+    <button type="submit" class="btn btn-primary btn-block">Update Eleve</button>
+</s:form>
 </div>
 </div>
 
-<!-- Footer -->
+    <!-- Footer -->
 
 <footer class="page-footer font-small fixed-bottom" style="background-color: rgba(0, 0, 0, 0.2);">
 

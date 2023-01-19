@@ -1,11 +1,15 @@
 package ma.ensat.test_struts.Repositories;
 
 import ma.ensat.test_struts.Config.HibernateUtil;
+import ma.ensat.test_struts.models.Eleve;
 import ma.ensat.test_struts.models.Filiere;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -80,6 +84,36 @@ public class FiliereRepositoryImp implements FiliereRepository{
         Filiere filiere = this.getCode(id);
         s.delete(filiere);
         Tx.commit();
+
+    }
+
+    public List<Eleve> getAllEleves(Filiere filiere){
+        List<Eleve> eleves = new ArrayList<>();
+        try {
+            s = HibernateUtil.getSessionFactory().openSession();
+            Tx = s.beginTransaction();
+            CriteriaBuilder cb = s.getCriteriaBuilder();
+            CriteriaQuery<Eleve> cq = cb.createQuery(Eleve.class);
+            Root<Eleve> root = cq.from(Eleve.class);
+
+            cq.select(root);
+            cq.where(cb.equal(root.get("ref_fil"), filiere));
+
+            eleves = s.createQuery(cq).getResultList();
+            Tx.commit();
+        } catch (Exception ex) {
+            if (Tx != null) {
+                Tx.rollback();
+            }
+            ex.printStackTrace();
+            System.out.println("Exception message dans get eleves of filieres: " + ex.getMessage());
+        } finally {
+            if (s != null) {
+                s.close();
+            }
+        }
+
+        return eleves;
 
     }
 }

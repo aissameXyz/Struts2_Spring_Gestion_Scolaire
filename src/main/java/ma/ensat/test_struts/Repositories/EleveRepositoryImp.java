@@ -72,4 +72,7 @@ public class EleveRepositoryImp implements EleveRepository{
         s.delete(art);
         Tx.commit();
     }
+
+
+
 }
