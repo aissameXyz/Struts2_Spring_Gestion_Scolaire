@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Repository
 public class EleveRepositoryImp implements EleveRepository{
     static Session s;
     static Transaction Tx;
@@ -35,11 +35,12 @@ public class EleveRepositoryImp implements EleveRepository{
         s = HibernateUtil.getSessionFactory().openSession();
         Tx = s.beginTransaction();
         return (Eleve)s.get(Eleve.class, id);
+
     }
 
     @Override
     public void create(Eleve eleve) {
-        System.out.println("we are creating");
+
         try {
 
 
@@ -49,7 +50,7 @@ public class EleveRepositoryImp implements EleveRepository{
         Tx.commit();
         }catch (Exception ex){
             System.out.println(ex.getMessage());
-            System.out.println("zbi hna f create ma khdamsh had 9lawi");
+
         }
     }
 

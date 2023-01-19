@@ -15,20 +15,20 @@ import ma.ensat.test_struts.models.Filiere;
 import org.apache.struts2.convention.annotation.Action;
 
 import org.apache.struts2.convention.annotation.Result;
-
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-
+@Controller
 public class EleveAction  extends ActionSupport implements ModelDriven  {
 
 
-
-    private EleveService service = new EleveServiceImp();
+    @Autowired
+    private EleveService service ;
     private FiliereService filiereService= new FiliereServiceImp();
 
 

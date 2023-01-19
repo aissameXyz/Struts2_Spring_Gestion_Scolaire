@@ -14,12 +14,15 @@ import org.springframework.stereotype.Controller;
 
 import java.util.List;
 
+@Controller
 public class FiliereAction extends ActionSupport implements ModelDriven {
     private Filiere filiere;
     private List<Filiere> filieres;
     private String codeId;
 
-    private FiliereService service= new FiliereServiceImp();
+    @Autowired
+
+    private FiliereService service;
 
     @Action(value = "allFilieres", results = {
             @Result(name = "success", location = "/afficheher_Filiere.jsp"),
