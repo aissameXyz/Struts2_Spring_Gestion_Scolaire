@@ -173,7 +173,7 @@
     </div>
     <!-- Container wrapper -->
 </nav>
-<div class="title text-default " style=" display: flex; justify-content: center; margin-top: 15vh;">
+<div class="title text-default " style="color: #cccccc; display: flex; justify-content: center; margin-top: 15vh;">
 <h1 style="text-align: center;">Gestion Scolairer Spring & Struts</h1>
 </div>
 <div class="container" style="display: flex; justify-content: center; align-items: center; height: 50vh;">

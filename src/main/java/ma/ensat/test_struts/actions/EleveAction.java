@@ -87,7 +87,7 @@ public class EleveAction  extends ActionSupport implements ModelDriven  {
 
 
 
-        //eleves.add(new Eleve("V567", "HOHO", "L7DAD", 99));
+
         this.eleves = this.service.getAll();
 
         return "success";
@@ -114,7 +114,6 @@ public class EleveAction  extends ActionSupport implements ModelDriven  {
             @Result(name = "input" , location = "/student.jsp")
     })
     public String save() {
-        System.out.println("eleve li 9adina: "+ eleve.getNom());
         try {
             if(eleve.getRef_fil().getCode_fil().isBlank()) {
                 eleve.setRef_fil(null);
@@ -122,7 +121,6 @@ public class EleveAction  extends ActionSupport implements ModelDriven  {
             }
             service.create(eleve);
 
-            //service.create(new Eleve("V567", "HOHO", "L7DAD", 99));
 
             return "success";
         }catch (Exception ex){
