@@ -27,9 +27,11 @@ import java.util.Properties;
 public class EleveAction  extends ActionSupport implements ModelDriven  {
 
 
+   // Injecting the EleveService into the EleveAction class.
     @Autowired
     private EleveService service ;
 
+  // Injecting the filiereService into the EleveAction class.
     @Autowired
     private FiliereService filiereService;
 
@@ -41,6 +43,8 @@ public class EleveAction  extends ActionSupport implements ModelDriven  {
     public String codeId;
     public  String nom;
     public String prenom;
+    // Message d'erreur
+    private String error_message;
 
     /*
         Cette action permet de récupérer tous les élèves de la base de données en utilisant
@@ -95,20 +99,28 @@ public class EleveAction  extends ActionSupport implements ModelDriven  {
     @Action(value = "eleveAction", results = {
             @Result(name = "success",  type = "redirectAction", params = {
                     "actionName", "all"}),
-            @Result(name = "error", location = "/error.jsp"),
+            @Result(name = "error", location = "/add_student.jsp"),
             @Result(name = "input" , location = "/student.jsp")
     })
     public String save() {
-        try {
+        Eleve new_eleve = service.getCode(eleve.getCne());
+       // Checking if the student already exists in the database.
+        if (new_eleve != null) {
+
+            error_message = "L'élève deja exist!!!!!!";
+
+            // charger la liste des filieres
+            this.setFilieres(filiereService.getAll());
+            return ERROR;
+        }
+           // Checking if the code_fil is empty, if it is empty it will set the reference of the
+           // filiere to null for the eleve.
             if(eleve.getRef_fil().getCode_fil().isBlank()){
                 eleve.setRef_fil(null);
             }
             service.create(eleve);
             return "success";
-            }catch (Exception ex){
-            System.out.println("ereeeur");
-           return "error";
-        }
+
     }
 
     /*
@@ -122,6 +134,7 @@ public class EleveAction  extends ActionSupport implements ModelDriven  {
             @Result(name = "error", location = "/error.jsp")
     })
     public String editEleve() {
+        // Trying to get the eleve using the service.
         try {
             System.out.println("we are in edit"+ codeId);
             // Retrieve the eleve using the service
@@ -181,21 +194,59 @@ public class EleveAction  extends ActionSupport implements ModelDriven  {
         return eleve;
     }
 
+    /**
+     * This function returns a list of students
+     * 
+     * @return The list of students.
+     */
     public List<Eleve> getEleves() {
         return eleves;
     }
 
+    /**
+     * This function returns a list of filieres
+     * 
+     * @return The list of filieres.
+     */
     public List<Filiere> getFilieres() {
         return filieres;
     }
 
+    /**
+     * This function is used to set the list of filieres
+     * 
+     * @param filieres the list of filieres
+     */
     public void setFilieres(List<Filiere> filieres) {
         this.filieres = filieres;
     }
+    // A constructor.
     public EleveAction() {
     }
+   /**
+    * This function returns the eleve of the class
+    * 
+    * @return The eleve object.
+    */
     public Eleve getEleve() {
         return this.eleve;
     }
 
+   /**
+    * This function returns the error message
+    * 
+    * @return The error message.
+    */
+    public String getError_message() {
+        return error_message;
+    }
+
+   /**
+    * This function sets the error message to the error message that is passed in
+    * 
+    * @param error_message The error message that is returned from the server.
+    */
+    public void setError_message(String error_message) {
+        this.error_message = error_message;
+    }
 }

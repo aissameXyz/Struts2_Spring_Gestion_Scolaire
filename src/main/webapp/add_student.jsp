@@ -164,6 +164,9 @@
 <!-- Navbar -->
 <h1 style="text-align: center;">Enter Eleve Information</h1>
 <form action="eleveAction" method="post">
+    <s:if test="error_message != null && !error_message.isEmpty()">
+        <span class="alert-danger error"><s:property value="error_message"/></span>
+    </s:if>
     <label for="cne">CNE:</label>
     <input type="text" id="cne" name="eleve.cne" required>
     <label for="nom">Nom:</label>

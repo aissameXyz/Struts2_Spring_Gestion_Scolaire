@@ -264,10 +264,7 @@ public class FiliereAction extends ActionSupport implements ModelDriven {
      * 
      * @param nbrNonDetermine the number of non-determined values in the array
      */
-    * This function returns the list of students
-    * 
-    * @return The list of students.
-    */
+
     public List<Eleve> getListeEleve() {
         return listeEleve;
     }
