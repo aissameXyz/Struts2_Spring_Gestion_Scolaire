@@ -184,7 +184,7 @@
 </div>
 <h1 class="text-center">Liste des Élèves</h1>
 <div class="d-flex justify-content-center">
-<table class="table table-striped table-hover centered  table-sm mx-auto">
+<table class="table table-striped table-hover centered  table-sm mx-auto ">
     <thead class="thead-dark">
     <tr>
         <th class="text-center">CNE</th>

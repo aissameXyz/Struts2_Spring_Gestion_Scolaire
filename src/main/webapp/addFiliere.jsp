@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: Boukhllad
@@ -162,6 +163,9 @@
 </nav>
 <h1 style="text-align: center;">Enter Filiere Information</h1>
 <form action="addFiliere" method="post">
+    <s:if test="error_message != null && !error_message.isEmpty()">
+        <span class="alert-danger error"><s:property value="error_message"/></span>
+    </s:if>
     <label for="code_fil">Code Filiere:</label>
     <input type="text" id="code_fil" name="filiere.code_fil" required>
     <label for="nom">Nom Filiere:</label>

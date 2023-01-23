@@ -29,6 +29,14 @@ public class Eleve {
         this.ref_fil = ref_fil;
     }
 
+    /*
+    Cette déclaration indique qu'il y a une relation ManyToOne entre l'entité Eleve et l'entité Filiere.
+    Cela signifie que plusieurs élèves peuvent avoir une seule référence à une filière.
+    La propriété "ref_fil" de l'entité Eleve est utilisée pour stocker la référence à la filière associée.
+    La propriété fetch est définie sur EAGER, ce qui signifie que lorsqu'on récupère un élève,
+    la filière associée sera également chargée immédiatement.
+    La colonne de jointure est nommée "ref_fil" et peut être nulle.
+     */
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "ref_fil", nullable = true)
     private Filiere ref_fil;

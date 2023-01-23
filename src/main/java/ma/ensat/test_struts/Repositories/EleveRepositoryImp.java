@@ -14,6 +14,11 @@ import java.util.List;
 public class EleveRepositoryImp implements EleveRepository{
     static Session s;
     static Transaction Tx;
+   /**
+    * I'm trying to get all the data from the table Eleve and put it in a list
+    * 
+    * @return A list of Eleve objects.
+    */
     @Override
     public List<Eleve> getAll() {
         List<Eleve> eleves = new ArrayList();
@@ -30,6 +35,12 @@ public class EleveRepositoryImp implements EleveRepository{
 
     }
 
+   /**
+    * I want to get the eleve object from the database using the id
+    * 
+    * @param id the id of the student
+    * @return The object of the class Eleve
+    */
     @Override
     public Eleve getCode(String id) {
         System.out.println("from get eleve code repo");
@@ -39,6 +50,11 @@ public class EleveRepositoryImp implements EleveRepository{
 
     }
 
+   /**
+    * It creates a new session, starts a transaction, saves the object and commits the transaction
+    * 
+    * @param eleve the object to be saved
+    */
     @Override
     public void create(Eleve eleve) {
 
@@ -54,6 +70,11 @@ public class EleveRepositoryImp implements EleveRepository{
 
         }
     }
+    /**
+     * updating a student, given a student object
+     * 
+     * @param eleve the entity 
+     */
 
     @Override
     public void update(Eleve eleve) {
@@ -64,6 +85,11 @@ public class EleveRepositoryImp implements EleveRepository{
         Tx.commit();
     }
 
+    /**
+     * I'm trying to delete an object from the database using the id of the object
+     * 
+     * @param id the id of the student
+     */
     @Override
     public void delete(String id) {
         s = HibernateUtil.getSessionFactory().openSession();

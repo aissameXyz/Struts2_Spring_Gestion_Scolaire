@@ -12,4 +12,6 @@ public interface FiliereRepository {
     void update(Filiere type);
     void delete(String id);
     public List<Eleve> getAllEleves(Filiere filiere);
+    public int getElevesCount(String code_fil);
+    public int getCountElevesSansFiliere();
 }

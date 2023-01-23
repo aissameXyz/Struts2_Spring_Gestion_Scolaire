@@ -186,14 +186,29 @@
     <tr>
         <th class="text-center">Code Filiere</th>
         <th class="text-center">Nom Filiere</th>
+        <th class="text-center">Nombre des élèves</th>
         <th colspan="2" class="text-center">ACTION</th>
     </tr>
     </thead>
     <tbody>
+    <s:if test="nbrNonDetermine != 0">
+        <tr>
+            <td align="center"></td>
+            <td class="text-center">Non Déterminé</td>
+            <td class="text-center"><s:property value="nbrNonDetermine"/></td>
+        </tr>
+    </s:if>
     <s:iterator value="filieres">
         <tr>
-            <td class="text-center"><s:property value="code_fil"/></td>
+            <td class="text-center">
+                <a href="<s:url action="listElevesByFiliere"><s:param name="codeId"><s:property value="code_fil"/></s:param></s:url>" >
+                    <s:property value="code_fil"/>
+                </a>
+
+            </td>
             <td class="text-center"><s:property value="nom_fil"/></td>
+            <td class="text-center">${count.get(code_fil)}</td>
+
             <td class="text-center">
                 <a href="<s:url action="editFiliere"><s:param name="codeId"><s:property value="code_fil"/></s:param></s:url>" >
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
